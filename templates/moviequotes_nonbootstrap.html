@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MovieQuotes</title>
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/moviequotes.css">
+</head>
+<body>
+    <h1> Add a movie quote</h1>
+    <form action="/addquote" method="post"> <!-- la accion /addquote emplea el metodo post que en el main lo tiene el manejador AddQuoteAction -->
+        <table>
+            <tr>
+                <td>Quote:</td>
+                <td><input type="text" name="quote"></td>
+            </tr>
+            <tr>
+                <td>Movie:</td>
+                <td><input type="text" name="movie"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Spoiler"></td>
+            </tr>
+
+        </table>
+    </form>
+    <hr>
+    <h1> MovieQuotes</h1>
+    <ul>
+        {% for moviequote in moviequotes_query %} <!-- moviequote es el objeto del diccionario moviquotes -->
+        <li>
+            <b>{{ moviequote.quote}}</b> <!-- con punto quote obtengo el atributo del objeto y lo muestra en las llaves-->
+            <div class="movie"> - {{ moviequote.movie }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+
+
+</body>
+</html>
